@@ -4,284 +4,234 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aryan • Anonymous</title>
+<title>About Aryan</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<!-- PREMIUM FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
+/* BODY */
 body{
 background:#000;
 color:#fff;
 font-family:'Poppins',sans-serif;
 overflow-x:hidden;
-scroll-behavior:smooth;
 }
 
-/* background glow */
+/* GLOW BG */
 body::before{
-content:'';
+content:"";
 position:fixed;
-width:100%;
-height:100%;
-background:radial-gradient(circle at 20% 20%, rgba(255,46,99,0.15), transparent),
-radial-gradient(circle at 80% 80%, rgba(255,0,100,0.1), transparent);
-z-index:-2;
-}
-
-/* particles */
-canvas{
-position:fixed;
-top:0;
-left:0;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#ff004c,transparent);
+filter:blur(220px);
+top:-200px;
+left:-200px;
 z-index:-1;
 }
 
-/* section */
-.section{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:60px 20px;
+/* HEADER */
+header{
 text-align:center;
+padding:40px 20px;
+font-size:32px;
+font-family:'Orbitron',sans-serif;
+letter-spacing:3px;
+color:#fff;
+text-shadow:0 0 25px #ff004c;
 }
 
-/* title */
-.title{
-font-family:'Playfair Display',serif;
-font-size:36px;
-letter-spacing:2px;
-color:#ff2e63;
-text-shadow:0 0 20px #ff2e63;
-margin-bottom:20px;
-}
-
-/* text */
-.text{
-max-width:700px;
-line-height:1.9;
-color:#ccc;
-}
-
-/* card */
+/* GLASS CARD */
 .card{
-margin-top:25px;
-padding:20px;
-border-radius:18px;
+margin:20px;
+padding:25px;
+border-radius:25px;
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(12px);
-border:1px solid rgba(255,255,255,0.1);
-box-shadow:0 0 30px rgba(255,46,99,0.2);
-width:100%;
-max-width:480px;
-transition:0.3s;
+backdrop-filter:blur(20px);
+box-shadow:0 0 30px rgba(255,0,76,0.25);
+transition:0.4s;
 }
 
 .card:hover{
-transform:translateY(-5px);
-box-shadow:0 0 50px rgba(255,46,99,0.5);
+transform:translateY(-5px) scale(1.02);
+box-shadow:0 0 60px rgba(255,0,76,0.7);
 }
 
-/* links */
+/* UNICODE TITLE STYLE */
+.title{
+font-size:22px;
+margin-bottom:15px;
+color:#ff4d6d;
+letter-spacing:1px;
+}
+
+/* TEXT */
+.text{
+font-size:15px;
+line-height:1.8;
+opacity:0.9;
+}
+
+/* LINKS */
 .link{
-display:block;
-margin:10px 0;
-padding:12px;
-border-radius:10px;
-text-decoration:none;
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:10px;
 color:#fff;
+text-decoration:none;
+padding:12px;
+border-radius:12px;
 background:rgba(255,255,255,0.05);
 transition:0.3s;
 }
 
 .link:hover{
-background:#ff2e63;
-box-shadow:0 0 20px #ff2e63;
+background:#ff004c;
+transform:translateX(5px);
 }
 
-/* bottom nav */
+/* EMOJI GLOW */
+.emoji{
+filter:drop-shadow(0 0 8px #ff004c);
+}
+
+/* MUSIC BUTTON */
+.btn{
+position:fixed;
+bottom:90px;
+right:20px;
+background:#ff004c;
+padding:14px 20px;
+border-radius:50px;
+cursor:pointer;
+box-shadow:0 0 25px #ff004c;
+font-size:18px;
+}
+
+/* NAVBAR */
 .nav{
 position:fixed;
 bottom:0;
-left:0;
 width:100%;
+background:rgba(0,0,0,0.9);
 display:flex;
 justify-content:space-around;
-background:rgba(0,0,0,0.8);
+padding:15px 0;
 backdrop-filter:blur(10px);
-padding:10px 0;
-border-top:1px solid rgba(255,255,255,0.1);
 }
 
 .nav a{
-color:#aaa;
+color:#fff;
 text-decoration:none;
-font-size:13px;
-transition:0.3s;
+font-size:14px;
+opacity:0.7;
 }
 
 .nav a:hover{
-color:#ff2e63;
-text-shadow:0 0 10px #ff2e63;
+opacity:1;
+color:#ff4d6d;
 }
 
-/* music */
-.music{
-position:fixed;
-top:15px;
-right:15px;
-background:#ff2e63;
-border:none;
-padding:10px;
-border-radius:50%;
-color:#fff;
-cursor:pointer;
+/* FADE */
+.fade{
+animation:fade 1s ease;
 }
 
-/* footer */
-.footer{
-text-align:center;
-padding:30px;
-color:#666;
+@keyframes fade{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
-
-<button class="music" onclick="toggleMusic()">🎵</button>
-
-<audio id="bgm" loop>
-<source src="https://files.catbox.moe/6d6w4p.mp3">
-</audio>
-
-<!-- HOME -->
-<section class="section" id="home">
-<div class="title">𝐀ʀʏᴀɴ</div>
-<div class="text">
-Not always active… but always real.  
-I don’t chase attention — I build presence.
-</div>
-</section>
+<header>𝐀ʙᴏᴜᴛ 𝐀ʀʏᴀɴ ✦</header>
 
 <!-- ABOUT -->
-<section class="section" id="about">
-<div class="title">𝐀ʙᴏᴜᴛ 𝐌ᴇ</div>
-<div class="card">
-<p>➡️ Name: Aryan</p>
-<p>➡️ Username: @NotYourAnonymous</p>
-<p>➡️ Status: Not Always Active ⚡</p>
-<p>➡️ NFT: Buyer & Seller 😽</p>
-</div>
-</section>
-
-<!-- LINKS -->
-<section class="section" id="links">
-<div class="title">𝐂ᴏɴɴᴇᴄᴛ</div>
-<div class="card">
-<a class="link" href="https://t.me/NotYourAnonymous" target="_blank">Telegram</a>
-<a class="link" href="https://www.instagram.com/notyouranonymous_" target="_blank">Instagram</a>
-<a class="link" href="https://t.me/Unified7Networks" target="_blank">Channel</a>
-<a class="link" href="https://t.me/eldian_bot_update" target="_blank">Network</a>
-<a class="link" href="https://t.me/TimePassWaleLog" target="_blank">Group</a>
-</div>
-</section>
-
-<!-- STATS -->
-<section class="section" id="stats">
-<div class="title">𝐒ᴛᴀᴛs</div>
-<div class="card" id="statsBox">
-<p>Loading stats...</p>
-</div>
-</section>
-
-<!-- PORTFOLIO -->
-<section class="section" id="portfolio">
-<div class="title">𝐏ᴏʀᴛғᴏʟɪᴏ</div>
-<div class="card">
-<p>🔥 NFT Trading</p>
-<p>⚡ Telegram Systems (Coming Soon)</p>
-<p>🚀 Website Projects</p>
-</div>
-</section>
-
-<!-- BOTS -->
-<section class="section" id="bots">
-<div class="title">𝐁ᴏᴛs</div>
+<div class="card fade">
+<div class="title">✦ 𝐀ʙᴏᴜᴛ 𝐌ᴇ</div>
 <div class="text">
-Coming soon… not basic ones.
-</div>
-</section>
+I’m Aryan — also known as Anonymous.  
+Not always active, but always real ⚡  
 
-<div class="footer">
-Designed by Aryan • Anonymous
+I don’t follow trends — I create my own space.  
+From building Telegram systems to fixing complex problems,  
+I focus on precision, speed, and clean execution.  
+
+I understand things deeply, break them, rebuild them better.  
+That’s what makes me different.
 </div>
+</div>
+
+<!-- INFO -->
+<div class="card fade">
+<div class="title">✦ 𝐈𝐧𝐟𝐨</div>
+<div class="text">
+<span class="emoji">➤</span> 𝐆ʀᴏᴜᴘ : Time Pass 🎀 <br>
+<span class="emoji">➤</span> 𝐁ᴏᴛ : Not Available ⚙️ <br>
+<span class="emoji">➤</span> 𝐂ʜᴀɴɴᴇʟ : Unified7Networks ⚫️ <br>
+<span class="emoji">➤</span> 𝐍ᴇᴛᴡᴏʀᴋ : Eldian Bot Updates 🔻 <br>
+<span class="emoji">➤</span> 𝐒ᴛᴀᴛᴜ𝐬 : Not Always Active ⚡
+</div>
+</div>
+
+<!-- CONNECT -->
+<div class="card fade">
+<div class="title">✦ 𝐂𝐨𝐧𝐧𝐞𝐜𝐭</div>
+
+<a class="link" href="https://t.me/NotYourAnonymous">📩 Telegram</a>
+<a class="link" href="https://www.instagram.com/notyouranonymous_">📸 Instagram</a>
+<a class="link" href="https://t.me/Unified7Networks">📢 Channel</a>
+<a class="link" href="https://t.me/eldian_bot_update">🌐 Network</a>
+<a class="link" href="https://t.me/TimePassWaleLog">💬 Group</a>
+
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="card fade">
+<div class="title">✦ 𝐀𝐜𝐡𝐢𝐞𝐯𝐞𝐦𝐞𝐧𝐭𝐬</div>
+<div class="text">
+🏸 State Badminton Champion <br>
+💻 Advanced Level Coder <br>
+⚙️ System Fixer & Optimizer <br>
+🚀 Building future-level projects
+</div>
+</div>
+
+<!-- MUSIC -->
+<div class="btn" onclick="toggleMusic()">🎵</div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <!-- NAV -->
 <div class="nav">
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#links">Links</a>
-<a href="#stats">Stats</a>
-<a href="#portfolio">Work</a>
+<a href="#">🏠</a>
+<a href="#">👤</a>
+<a href="#">📊</a>
+<a href="#">💬</a>
 </div>
 
 <script>
-/* music toggle */
-let playing=false;
+let music=document.getElementById("music");
+
 function toggleMusic(){
-let m=document.getElementById("bgm");
-if(!playing){m.play();playing=true;}
-else{m.pause();playing=false;}
+if(music.paused){
+music.play();
+}else{
+music.pause();
 }
-
-/* fake stats */
-setTimeout(()=>{
-document.getElementById("statsBox").innerHTML=`
-<p>👤 Followers: Growing</p>
-<p>💬 Groups: 3+</p>
-<p>⚡ Projects: Coming Soon</p>
-<p>🔥 Status: Building</p>
-`;
-},1500);
-
-/* particles */
-const c=document.getElementById("particles");
-const ctx=c.getContext("2d");
-
-c.width=innerWidth;
-c.height=innerHeight;
-
-let p=[];
-for(let i=0;i<80;i++){
-p.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2,d:Math.random()*1});
 }
-
-function draw(){
-ctx.clearRect(0,0,c.width,c.height);
-ctx.fillStyle="rgba(255,46,99,0.7)";
-ctx.beginPath();
-p.forEach(a=>{
-ctx.moveTo(a.x,a.y);
-ctx.arc(a.x,a.y,a.r,0,Math.PI*2,true);
-});
-ctx.fill();
-
-p.forEach(a=>{
-a.y+=a.d;
-if(a.y>c.height){
-a.y=0;
-a.x=Math.random()*c.width;
-}
-});
-}
-
-setInterval(draw,30);
 </script>
 
 </body>
